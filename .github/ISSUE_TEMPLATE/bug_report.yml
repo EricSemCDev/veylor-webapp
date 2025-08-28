@@ -1,0 +1,27 @@
+name: "🐞 Bug report"
+description: "Reporte um bug para nos ajudar a melhorar"
+title: "[BUG] "
+labels: [bug]
+body:
+  - type: textarea
+    attributes:
+      label: Descrição
+      description: Explique o problema encontrado
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Passos para reproduzir
+      description: Como reproduzir o bug (passo a passo)
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Comportamento esperado
+      description: O que você esperava que acontecesse
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Versão/ambiente
+      description: Informe versão do sistema, navegador, SO, etc.

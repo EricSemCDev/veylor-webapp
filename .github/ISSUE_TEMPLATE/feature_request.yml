@@ -1,0 +1,21 @@
+name: "🌟 Feature request"
+description: "Sugira uma nova funcionalidade ou melhoria"
+title: "[FEATURE] "
+labels: [enhancement]
+body:
+  - type: textarea
+    attributes:
+      label: Descrição
+      description: Explique qual funcionalidade você gostaria de ver
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Motivação
+      description: Por que essa feature é importante?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Alternativas consideradas
+      description: Já pensou em outra solução? Liste aqui
