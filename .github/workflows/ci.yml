@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      # 1. Checkout do código
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Setup Node
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      # 3. Instala dependências do frontend
+      - name: Install dependencies (frontend)
+        working-directory: ./frontend
+        run: npm ci
+
+      # 4. Build do frontend
+      - name: Build frontend
+        working-directory: ./frontend
+        run: npm run build
+
+      # 5. Testes do frontend
+      - name: Test frontend
+        working-directory: ./frontend
+        run: npm test --if-present
+
+      # 6. Instala dependências do backend
+      - name: Install dependencies (backend)
+        working-directory: ./backend
+        run: npm ci
+
+      # 7. Testes do backend
+      - name: Test backend
+        working-directory: ./backend
+        run: npm test --if-present
